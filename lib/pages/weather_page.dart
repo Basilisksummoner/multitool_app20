@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'services/weather_service.dart';
+//import 'services/weather_service.dart';
 import 'modules/weather_module.dart';
 import 'package:lottie/lottie.dart';
-import 'package:multitool_app/config/config.dart';
+//import 'package:multitool_app/config/config.dart';
 
 
 class WeatherPage extends StatefulWidget {
@@ -14,10 +14,9 @@ class WeatherPage extends StatefulWidget {
 
 class WeatherPageState extends State<WeatherPage> {
   
-  final weatherService = WeatherService(Config.weatherApiKey);
     Weather? myWeather;
 
-  Future fetchWeather() async {
+  /*Future fetchWeather() async {
     try {
       String cityName = await weatherService.getCurrentCity();
       print('Город: $cityName');
@@ -31,7 +30,7 @@ class WeatherPageState extends State<WeatherPage> {
     } catch (e) {
       print('Ошибка при получении погоды: $e');
     }
-  }
+  }*/
 
     // animations
     String getWeatherAnimation(String? mainCondition) {
@@ -62,7 +61,7 @@ class WeatherPageState extends State<WeatherPage> {
     @override
     void initState() {
       super.initState();
-      fetchWeather();
+      //fetchWeather();
     }
 
 

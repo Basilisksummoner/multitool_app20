@@ -1,15 +1,15 @@
 import 'dart:convert';
-import 'package:geolocator/geolocator.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:http/http.dart' as http;
 import '../modules/weather_module.dart';
 import 'package:multitool_app/config/config.dart';
 
 
 class WeatherService {
-  final String apiKey;
+  static final WeatherService instance = WeatherService.internal();
+  factory WeatherService() => instance;
+  WeatherService.internal();
 
-  WeatherService(this.apiKey);
+  static final String apiKey = Config.weatherApiKey;
 
   Future<Weather> getWeatherByCity(String cityName) async {
     final url = Uri.parse('${Config.weatherBaseUrl}?q=$cityName&appid=${Config.weatherApiKey}&units=metric');
@@ -25,8 +25,9 @@ class WeatherService {
       throw Exception('Ошибка сети: $e');
     }
   }
+}
 
-  Future<Position> getCurrentPosition() async {
+  /*Future<Position> getCurrentPosition() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       throw Exception('Служба геолокации отключена. Включите её в настройках телефона.');
@@ -71,3 +72,4 @@ class WeatherService {
   
   }
 }
+*/
