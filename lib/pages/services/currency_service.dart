@@ -5,7 +5,7 @@ import 'dart:convert';
 
 
 String fromCurrency = 'USD';
-String toCurrency = 'EUR';
+String toCurrency = 'KGS';
 double rate = 0.0;
 double total = 0.0;
 TextEditingController amountController = TextEditingController();
