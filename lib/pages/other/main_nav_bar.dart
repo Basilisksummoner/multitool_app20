@@ -30,7 +30,10 @@ class NavBarState extends State<NavBar> {
             icon: Icon(Icons.cloud),
             label: 'Погода',
           ),
-          // ill add smthng later
+          BottomNavigationBarItem(
+            icon: Icon(Icons.attach_money),
+            label: 'Валюта',
+          )
         ],
       ),
     );
