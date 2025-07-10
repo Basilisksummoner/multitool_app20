@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:multitool_app/shared/app_state.dart';
-import './services/weather_service.dart';
+import '../services/weather_service.dart';
+import 'main_nav_bar.dart';
 
 
 class LoadingPage extends StatefulWidget {
@@ -53,8 +54,17 @@ class LoadingPageState extends State<LoadingPage> {
       
       final weather = await WeatherService().getWeatherByCity(city);
       AppState().weather = weather;
-    } catch(e) {
-      debugPrint('Ошибка загрузки: $e');
+      
+      if (!mounted) return;
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const NavBar()),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Ошибка загрузки: $e')),
+      );
     }
   }
 
@@ -65,16 +75,3 @@ class LoadingPageState extends State<LoadingPage> {
     );
   }
 }
-
-      /*// 5. Навигация
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const MainNavBar()),
-      );
-    } catch (e) {
-      debugPrint('Ошибка загрузки: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Ошибка: $e')),
-      );
-    }
-  }*/

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import './pages/loading_page.dart';
+import 'pages/other/loading_page.dart';
 
 void main() async {
   await dotenv.load();

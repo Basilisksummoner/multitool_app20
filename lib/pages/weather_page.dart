@@ -21,7 +21,7 @@ class WeatherPageState extends State<WeatherPage> {
       String cityName = await weatherService.getCurrentCity();
       print('Город: $cityName');
 
-      final weather = await weatherService.getWeatherByCity(cityName); // временно указываем London
+      final weather = await weatherService.getWeatherByCity(cityName); 
       print('Погода получена: ${weather.cityName}, ${weather.temperature}°C');
 
       setState(() {
