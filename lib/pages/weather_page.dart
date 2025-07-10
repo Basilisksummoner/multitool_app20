@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multitool_app/pages/services/weather_service.dart';
 import 'modules/weather_module.dart';
 import 'package:lottie/lottie.dart';
 import '../shared/app_state.dart';
@@ -12,11 +13,10 @@ class WeatherPage extends StatefulWidget {
 }
 
 class WeatherPageState extends State<WeatherPage> {
-  
-    Weather? myWeather;
+  Weather? myWeather;
 
-    // animations
-    String getWeatherAnimation(String? mainCondition) {
+  // animations
+  String getWeatherAnimation(String? mainCondition) {
       if (mainCondition == null) return 'assets/sunny.json';
 
       switch (mainCondition.toLowerCase()) {
@@ -41,53 +41,83 @@ class WeatherPageState extends State<WeatherPage> {
     }
 
 
-    @override
-    void initState() {
-      super.initState();
-      myWeather = AppState().weather;
-      if (myWeather == null) {
-        print('Weather is null in WeatherPage');
-      } else {
-        print('Weather loaded in WeatherPage: ${myWeather!.temperature}');
-      }
-    }
+  @override
+  void initState() {
+    super.initState();
+    myWeather = AppState().weather;
+  }
 
-  
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
+  Future<void> refreshWeather() async {
+    try {
+      final city = AppState().city;
+      if (city == null) throw Exception('Город не найден в AppState');
+
+      final updatedWeather = await WeatherService().getWeatherByCity(city);
+      AppState().weather = updatedWeather;
+
+      if (!mounted) return;
+      setState(() {
+        myWeather = updatedWeather;
+      });
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Ошибка обновления: $e')),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (myWeather == null) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+        );
+      }
+    return Scaffold(
+      appBar: AppBar(
           title: const Text('Погода'),
           backgroundColor: const Color.fromARGB(255, 242, 232, 232),
         ),
-        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-        body: Center(
-                child: myWeather != null
-                  ? Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        myWeather!.cityName,
-                        style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        '${myWeather!.temperature.round()}°C',
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Lottie.asset(getWeatherAnimation(myWeather?.mainCondition)),
-                    ]
-                  )
-                : CircularProgressIndicator(color: Colors.white),
-              ),
-      );
-    }
+      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+      body: RefreshIndicator(
+        onRefresh: refreshWeather,
+        child: SingleChildScrollView(
+          child: myWeather != null
+          ? Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  myWeather!.cityName,
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  '${myWeather!.temperature.round()}°C',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                Lottie.asset(getWeatherAnimation(myWeather?.mainCondition)),
+              ],
+            )
+          : Center(
+              child: Text(
+              'No weather data available',
+              style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 
