@@ -71,7 +71,19 @@ class LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(child: CircularProgressIndicator()),
+      backgroundColor: Color.fromARGB(255, 0, 0, 0),
+      body: Center(
+        //child: CircularProgressIndicator()
+        child: Text(
+          'MultiTool',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1.5,
+          ),
+        ),
+      )
     );
   }
 }
