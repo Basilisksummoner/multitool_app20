@@ -47,25 +47,6 @@ class WeatherPageState extends State<WeatherPage> {
     myWeather = AppState().weather;
   }
 
-  Future<void> refreshWeather() async {
-    try {
-      final city = AppState().city;
-      if (city == null) throw Exception('Город не найден в AppState');
-
-      final updatedWeather = await WeatherService().getWeatherByCity(city);
-      AppState().weatherModel = updatedWeather;
-
-      if (!mounted) return;
-      setState(() {
-        myWeather = updatedWeather;
-      });
-    } catch (e) {
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Ошибка обновления: $e')),
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

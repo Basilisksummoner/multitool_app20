@@ -15,9 +15,7 @@ class AppState {
   Weather? weatherModel;
   
   String? get city => someCity;
-
   Coords? get coords => someCoords;
-
   Weather? get weather => weatherModel;
 
 
