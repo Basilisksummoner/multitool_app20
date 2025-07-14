@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:multitool_app/shared/app_state.dart';
 import './services/currency_service.dart';
 
 
@@ -63,7 +64,7 @@ class CurrencyPageState extends State<CurrencyPage> {
                         if (value != ''){
                           setState(() {
                             double amount = double.parse(value);
-                            total = amount * rate;
+                            CurrencyState().total = amount * CurrencyState().rate;
                           });
                         }
                       },
@@ -75,7 +76,7 @@ class CurrencyPageState extends State<CurrencyPage> {
                   children: [
                     SizedBox(width: 100,
                       child: DropdownButton<String>(
-                        value: fromCurrency,
+                        value: CurrencyState().from,
                         isExpanded: true,
                         dropdownColor: Colors.black,
                         style: TextStyle(color: Colors.white),
@@ -87,7 +88,7 @@ class CurrencyPageState extends State<CurrencyPage> {
                         }).toList(),
                         onChanged: (newValue){
                           setState(() {
-                            fromCurrency = newValue!;
+                            CurrencyState().from = newValue!;
                             getRates(setState);
                           });
                           getCurrencies(setState);
@@ -102,7 +103,7 @@ class CurrencyPageState extends State<CurrencyPage> {
                     ),
                     SizedBox(width: 100,
                       child: DropdownButton<String>(
-                        value: toCurrency,
+                        value: CurrencyState().to,
                         isExpanded: true,
                         dropdownColor: Colors.black,
                         style: TextStyle(color: Colors.white),
@@ -114,7 +115,7 @@ class CurrencyPageState extends State<CurrencyPage> {
                         }).toList(),
                         onChanged: (newValue){
                           setState(() {
-                            toCurrency = newValue!;
+                            CurrencyState().to = newValue!;
                             getRates(setState);
                           });
                           getCurrencies(setState);
@@ -125,13 +126,13 @@ class CurrencyPageState extends State<CurrencyPage> {
                 ),
               ),
               SizedBox(height: 20),
-              Text('Курс: $rate',
+              Text('Курс: ${CurrencyState().rate}',
                 style: TextStyle(
                   color: Colors.white, fontSize: 20
                 )
               ),
               SizedBox(height: 40),
-              Text(total.toStringAsFixed(3),
+              Text(CurrencyState().total.toStringAsFixed(3),
                 style: TextStyle(
                   color: const Color.fromARGB(255, 173, 129, 217),
                   fontSize: 40,

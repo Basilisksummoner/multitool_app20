@@ -2,14 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:multitool_app/config/config.dart';
 import 'dart:convert';
+import 'package:multitool_app/shared/app_state.dart';
 
 
-String fromCurrency = 'USD';
-String toCurrency = 'KGS';
-double rate = 0.0;
-double total = 0.0;
 TextEditingController amountController = TextEditingController();
 List<String> currencies = [];
+
 
 void getCurrencies(Function updateState) async{
   var response = await http.get(Uri.parse(Config.urlForCurr));
@@ -41,7 +39,7 @@ void getRates(Function updateState) async{
       try {
         final data = json.decode(response.body);
         updateState(() {
-          rate = (data['conversion_rates'][toCurrency] as num).toDouble();
+          CurrencyState().rate = (data['conversion_rates'][CurrencyState().to] as num).toDouble();
         });
       } catch (e) {
       print('Ошибка при разборе данных: $e');
@@ -54,8 +52,8 @@ void getRates(Function updateState) async{
 }
 
 void swapCurrencies(Function updateState) {
-  String temp = fromCurrency;
-  fromCurrency = toCurrency;
-  toCurrency = temp;
+  String temp = CurrencyState().from;
+  CurrencyState().from = CurrencyState().to;
+  CurrencyState().to = temp;
   getRates(updateState);
 }

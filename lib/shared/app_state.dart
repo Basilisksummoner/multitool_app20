@@ -67,4 +67,27 @@ class CurrencyState {
   
   factory CurrencyState() => _instance;
   
-  CurrencyState._internal();}
+  CurrencyState._internal();
+  
+  String fromCurrency = 'USD';
+  String toCurrency = 'KGS';
+  double conversionRate = 0.0;
+  double totalAmount = 0.0;
+  
+  String get from => fromCurrency;
+  set from(String value) {
+    fromCurrency = value;
+  }
+  String get to => toCurrency;
+  set to(String value) {
+    toCurrency = value;
+  }
+  double get rate => conversionRate;
+  set rate(double value) {
+    conversionRate = value;
+  }
+  double get total => totalAmount;
+  set total(double value) {
+    totalAmount = value;
+  }
+}
