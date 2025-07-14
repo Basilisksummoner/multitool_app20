@@ -69,18 +69,18 @@ class CurrencyState {
   
   CurrencyState._internal();
   
-  String fromCurrency = 'USD';
-  String toCurrency = 'KGS';
+  String fromDefault = 'USD';
+  String toDefault = 'KGS';
   double conversionRate = 0.0;
   double totalAmount = 0.0;
   
-  String get from => fromCurrency;
-  set from(String value) {
-    fromCurrency = value;
+  String get fromCurrency => fromDefault;
+  set fromCurrency(String value) {
+    fromDefault = value;
   }
-  String get to => toCurrency;
-  set to(String value) {
-    toCurrency = value;
+  String get toCurrency => toDefault;
+  set toCurrency(String value) {
+    toDefault = value;
   }
   double get rate => conversionRate;
   set rate(double value) {

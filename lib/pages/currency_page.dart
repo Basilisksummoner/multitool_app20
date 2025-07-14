@@ -76,7 +76,7 @@ class CurrencyPageState extends State<CurrencyPage> {
                   children: [
                     SizedBox(width: 100,
                       child: DropdownButton<String>(
-                        value: CurrencyState().from,
+                        value: CurrencyState().fromCurrency,
                         isExpanded: true,
                         dropdownColor: Colors.black,
                         style: TextStyle(color: Colors.white),
@@ -88,7 +88,7 @@ class CurrencyPageState extends State<CurrencyPage> {
                         }).toList(),
                         onChanged: (newValue){
                           setState(() {
-                            CurrencyState().from = newValue!;
+                            CurrencyState().toCurrency = newValue!;
                             getRates(setState);
                           });
                           getCurrencies(setState);
@@ -103,7 +103,7 @@ class CurrencyPageState extends State<CurrencyPage> {
                     ),
                     SizedBox(width: 100,
                       child: DropdownButton<String>(
-                        value: CurrencyState().to,
+                        value: CurrencyState().toCurrency,
                         isExpanded: true,
                         dropdownColor: Colors.black,
                         style: TextStyle(color: Colors.white),
@@ -115,7 +115,7 @@ class CurrencyPageState extends State<CurrencyPage> {
                         }).toList(),
                         onChanged: (newValue){
                           setState(() {
-                            CurrencyState().to = newValue!;
+                            CurrencyState().toCurrency = newValue!;
                             getRates(setState);
                           });
                           getCurrencies(setState);

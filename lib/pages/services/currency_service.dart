@@ -39,7 +39,9 @@ void getRates(Function updateState) async{
       try {
         final data = json.decode(response.body);
         updateState(() {
-          CurrencyState().rate = (data['conversion_rates'][CurrencyState().to] as num).toDouble();
+          CurrencyState().rate = (
+            data['conversion_rates'][CurrencyState().toCurrency] as num
+            ).toDouble();
         });
       } catch (e) {
       print('Ошибка при разборе данных: $e');
@@ -52,8 +54,8 @@ void getRates(Function updateState) async{
 }
 
 void swapCurrencies(Function updateState) {
-  String temp = CurrencyState().from;
-  CurrencyState().from = CurrencyState().to;
-  CurrencyState().to = temp;
+  String temp = CurrencyState().fromCurrency;
+  CurrencyState().toCurrency = CurrencyState().toCurrency;
+  CurrencyState().toCurrency = temp;
   getRates(updateState);
 }
