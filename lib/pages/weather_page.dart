@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:multitool_app/pages/services/weather_service.dart';
 import 'models/weather_model.dart';
 import 'package:lottie/lottie.dart';
 import '../shared/app_state.dart';
@@ -44,7 +43,7 @@ class WeatherPageState extends State<WeatherPage> {
   @override
   void initState() {
     super.initState();
-    myWeather = AppState().weather;
+    myWeather = WeatherState().weather;
   }
 
 

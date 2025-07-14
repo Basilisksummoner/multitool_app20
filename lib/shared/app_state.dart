@@ -3,12 +3,12 @@ import 'package:geolocator/geolocator.dart';
 import 'package:multitool_app/pages/models/weather_model.dart';
 import 'package:multitool_app/pages/services/weather_service.dart';
 
-class AppState {
-  static final AppState instance = AppState.internal();
+class WeatherState {
+  static final WeatherState instance = WeatherState.internal();
   
-  factory AppState() => instance;
+  factory WeatherState() => instance;
   
-  AppState.internal();
+  WeatherState.internal();
 
   String? someCity;
   Coords? someCoords;
@@ -40,7 +40,7 @@ class AppState {
       }
 
       final position = await Geolocator.getCurrentPosition();
-      AppState().someCoords = Coords(
+      WeatherState().someCoords = Coords(
         latitude: position.latitude,
         longitude: position.longitude,
       );
@@ -51,13 +51,20 @@ class AppState {
         position.longitude,
       );
       final city = placemarks.first.locality ?? 'Unknown';
-      AppState().someCity = city;
+      WeatherState().someCity = city;
 
       
       final weather = await WeatherService().getWeatherByCity(city);
-      AppState().weatherModel = weather;
+      WeatherState().weatherModel = weather;
     } catch (e) {
       print('Ошибка при загрузке данных о погоде: $e');
     }
   }
 }
+
+class CurrencyState {
+  static final CurrencyState _instance = CurrencyState._internal();
+  
+  factory CurrencyState() => _instance;
+  
+  CurrencyState._internal();}
