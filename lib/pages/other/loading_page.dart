@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:multitool_app/pages/models/weather_model.dart';
 import 'package:multitool_app/shared/app_state.dart';
-import '../services/weather_service.dart';
+//import 'package:geolocator/geolocator.dart';
+//import 'package:geocoding/geocoding.dart';
+//import 'package:multitool_app/pages/models/weather_model.dart';
+//import 'package:multitool_app/shared/app_state.dart';
+//import '../services/weather_service.dart';
 import 'main_nav_bar.dart';
 
 
@@ -18,46 +19,15 @@ class LoadingPageState extends State<LoadingPage> {
   @override
   void initState() {
     super.initState();
-    loadWeatherData();
+    tryToLoad();
   }
-  Future<void> loadWeatherData() async {
+  Future<void> tryToLoad() async {
 
     try {
-      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-      if (!serviceEnabled) {
-        throw Exception('Геолокация отключена');
+      await loadWeatherData();
+      if (AppState().weather == null) {
+        throw Exception('Не удалось загрузить данные о погоде');
       }
-
-      LocationPermission permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          throw Exception('Разрешение отклонено');
-        }
-      }
-
-      if (permission == LocationPermission.deniedForever) {
-        throw Exception('Разрешение навсегда отклонено');
-      }
-
-      final position = await Geolocator.getCurrentPosition();
-      AppState().coords = Coords(
-        latitude: position.latitude,
-        longitude: position.longitude,
-      );
-
-  
-      final placemarks = await placemarkFromCoordinates(
-        position.latitude,
-        position.longitude,
-      );
-      final city = placemarks.first.locality ?? 'Unknown';
-      AppState().city = city;
-
-      
-      final weather = await WeatherService().getWeatherByCity(city);
-      AppState().weather = weather;
-      
       if (!mounted) return;
       Navigator.pushReplacement(
         context,
