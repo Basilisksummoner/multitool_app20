@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multitool_app/pages/services/weather_service.dart';
-import 'modules/weather_module.dart';
+import 'models/weather_model.dart';
 import 'package:lottie/lottie.dart';
 import '../shared/app_state.dart';
 

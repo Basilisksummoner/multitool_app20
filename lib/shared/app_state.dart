@@ -1,4 +1,4 @@
-import 'package:multitool_app/pages/modules/weather_module.dart';
+import 'package:multitool_app/pages/models/weather_model.dart';
 
 class AppState {
   static final AppState instance = AppState.internal();
@@ -10,5 +10,4 @@ class AppState {
   String? city;
   double? latitude;
   double? longitude;
-  Weather? weather;
-}
+  Weather? weather;}
