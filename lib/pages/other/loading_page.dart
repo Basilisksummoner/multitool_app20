@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:multitool_app/shared/app_state.dart';
-//import 'package:geolocator/geolocator.dart';
-//import 'package:geocoding/geocoding.dart';
-//import 'package:multitool_app/pages/models/weather_model.dart';
-//import 'package:multitool_app/shared/app_state.dart';
-//import '../services/weather_service.dart';
 import 'main_nav_bar.dart';
 
 
@@ -24,7 +19,7 @@ class LoadingPageState extends State<LoadingPage> {
   Future<void> tryToLoad() async {
 
     try {
-      await loadWeatherData();
+      await AppState().loadWeatherData();
       if (AppState().weather == null) {
         throw Exception('Не удалось загрузить данные о погоде');
       }

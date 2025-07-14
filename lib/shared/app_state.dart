@@ -10,11 +10,21 @@ class AppState {
   
   AppState.internal();
 
-  String? city;
-  Coords? coords;
-  Weather? weather;}
+  String? someCity;
+  Coords? someCoords;
+  Weather? someWeather;
+  
+  String? get city => someCity;
+  set city(String? value) => someCity = value;
 
-Future<void> loadWeatherData() async {
+  Coords? get coords => someCoords;
+  set coords(Coords? value) => someCoords = value;
+
+  Weather? get weather => someWeather;
+  set weather(Weather? value) => someWeather = value;
+
+
+  Future loadWeatherData() async {
 
     try {
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
@@ -54,4 +64,5 @@ Future<void> loadWeatherData() async {
     } catch (e) {
       print('Ошибка при загрузке данных о погоде: $e');
     }
+  }
 }
