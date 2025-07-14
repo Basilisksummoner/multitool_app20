@@ -8,6 +8,5 @@ class AppState {
   AppState.internal();
 
   String? city;
-  double? latitude;
-  double? longitude;
+  Coords? coords;
   Weather? weather;}

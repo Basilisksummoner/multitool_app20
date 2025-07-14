@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:multitool_app/pages/models/weather_model.dart';
 import 'package:multitool_app/shared/app_state.dart';
 import '../services/weather_service.dart';
 import 'main_nav_bar.dart';
@@ -40,8 +41,10 @@ class LoadingPageState extends State<LoadingPage> {
       }
 
       final position = await Geolocator.getCurrentPosition();
-      AppState().latitude = position.latitude;
-      AppState().longitude = position.longitude;
+      AppState().coords = Coords(
+        latitude: position.latitude,
+        longitude: position.longitude,
+      );
 
   
       final placemarks = await placemarkFromCoordinates(

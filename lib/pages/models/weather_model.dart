@@ -18,3 +18,15 @@ class Weather {
       );
   }
 }
+class Coords {
+  final double latitude;
+  final double longitude;
+
+  const Coords({
+    required this.latitude,
+    required this.longitude,
+  });
+
+  @override
+  String toString() => 'Coords(lat: $latitude, lon: $longitude)';
+}
