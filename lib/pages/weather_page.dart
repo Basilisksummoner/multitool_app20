@@ -53,7 +53,7 @@ class WeatherPageState extends State<WeatherPage> {
       if (city == null) throw Exception('Город не найден в AppState');
 
       final updatedWeather = await WeatherService().getWeatherByCity(city);
-      AppState().weather = updatedWeather;
+      AppState().weatherModel = updatedWeather;
 
       if (!mounted) return;
       setState(() {

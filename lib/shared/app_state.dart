@@ -12,16 +12,13 @@ class AppState {
 
   String? someCity;
   Coords? someCoords;
-  Weather? someWeather;
+  Weather? weatherModel;
   
   String? get city => someCity;
-  set city(String? value) => someCity = value;
 
   Coords? get coords => someCoords;
-  set coords(Coords? value) => someCoords = value;
 
-  Weather? get weather => someWeather;
-  set weather(Weather? value) => someWeather = value;
+  Weather? get weather => weatherModel;
 
 
   Future loadWeatherData() async {
@@ -45,7 +42,7 @@ class AppState {
       }
 
       final position = await Geolocator.getCurrentPosition();
-      AppState().coords = Coords(
+      AppState().someCoords = Coords(
         latitude: position.latitude,
         longitude: position.longitude,
       );
@@ -56,11 +53,11 @@ class AppState {
         position.longitude,
       );
       final city = placemarks.first.locality ?? 'Unknown';
-      AppState().city = city;
+      AppState().someCity = city;
 
       
       final weather = await WeatherService().getWeatherByCity(city);
-      AppState().weather = weather;
+      AppState().weatherModel = weather;
     } catch (e) {
       print('Ошибка при загрузке данных о погоде: $e');
     }
