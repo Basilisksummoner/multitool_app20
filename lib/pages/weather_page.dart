@@ -80,8 +80,7 @@ class WeatherPageState extends State<WeatherPage> {
           backgroundColor: const Color.fromARGB(255, 242, 232, 232),
         ),
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-      body: RefreshIndicator(
-        onRefresh: refreshWeather,
+      body: Center(
         child: SingleChildScrollView(
           child: myWeather != null
           ? Column(

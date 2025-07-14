@@ -73,7 +73,6 @@ class LoadingPageState extends State<LoadingPage> {
     return const Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 0, 0),
       body: Center(
-        //child: CircularProgressIndicator()
         child: Text(
           'MultiTool',
           style: TextStyle(
