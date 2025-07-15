@@ -3,6 +3,7 @@ import '../models/weather_model.dart';
 import 'package:lottie/lottie.dart';
 import '../shared/app_state.dart';
 import '../shared/main_scaffold.dart';
+import '../shared/text_styles.dart';
 
 
 class WeatherPage extends StatefulWidget {
@@ -60,10 +61,7 @@ class WeatherPageState extends State<WeatherPage> {
               children: [
                 Text(
                   myWeather!.cityName,
-                  style: TextStyle(
-                    fontSize: 22,
-                    color: Colors.white,
-                  ),
+                  style: TextStyles.size(22),
                 ),
                 Text(
                   '${myWeather!.temperature.round()}°C',
