@@ -50,11 +50,6 @@ class WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (myWeather == null) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-        );
-      }
     return Scaffold(
       appBar: defaultAppBar('Погода'),
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
