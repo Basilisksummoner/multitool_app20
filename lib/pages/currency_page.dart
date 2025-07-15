@@ -88,7 +88,7 @@ class CurrencyPageState extends State<CurrencyPage> {
                         }).toList(),
                         onChanged: (newValue){
                           setState(() {
-                            CurrencyState().toCurrency = newValue!;
+                            CurrencyState().fromCurrency = newValue!;
                             getRates(setState);
                           });
                           getCurrencies(setState);
