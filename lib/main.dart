@@ -20,3 +20,11 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+PreferredSizeWidget defaultAppBar(String title) {
+  return AppBar(
+  title: Text(title),
+  backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+  );
+}

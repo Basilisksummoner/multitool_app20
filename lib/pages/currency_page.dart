@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:multitool_app/shared/app_state.dart';
 import './services/currency_service.dart';
+import '../main.dart';
 
 
 class CurrencyPage extends StatefulWidget {
@@ -12,6 +13,8 @@ class CurrencyPage extends StatefulWidget {
 }
 
 class CurrencyPageState extends State<CurrencyPage> {
+  
+  TextEditingController amountController = TextEditingController();
 
   @override
   void initState() {
@@ -23,10 +26,7 @@ class CurrencyPageState extends State<CurrencyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Валютный калькулятор'),
-        backgroundColor: const Color.fromARGB(255, 242, 232, 232),
-      ),
+      appBar: defaultAppBar('Валютный калькулятор'),
       
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       body: Padding(

@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:multitool_app/config/config.dart';
 import 'dart:convert';
 import 'package:multitool_app/shared/app_state.dart';
 
 
-TextEditingController amountController = TextEditingController();
 List<String> currencies = [];
 
 

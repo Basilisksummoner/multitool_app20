@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'models/weather_model.dart';
 import 'package:lottie/lottie.dart';
 import '../shared/app_state.dart';
+import '../main.dart';
 
 
 class WeatherPage extends StatefulWidget {
@@ -55,10 +56,7 @@ class WeatherPageState extends State<WeatherPage> {
         );
       }
     return Scaffold(
-      appBar: AppBar(
-          title: const Text('Погода'),
-          backgroundColor: const Color.fromARGB(255, 242, 232, 232),
-        ),
+      appBar: defaultAppBar('Погода'),
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       body: Center(
         child: SingleChildScrollView(
