@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:multitool_app/shared/app_state.dart';
-import './services/currency_service.dart';
+import '../services/currency_service.dart';
 import '../main.dart';
 
 

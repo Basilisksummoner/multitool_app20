@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'models/weather_model.dart';
+import '../models/weather_model.dart';
 import 'package:lottie/lottie.dart';
 import '../shared/app_state.dart';
 import '../main.dart';

@@ -1,7 +1,7 @@
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:multitool_app/pages/models/weather_model.dart';
-import 'package:multitool_app/pages/services/weather_service.dart';
+import 'package:multitool_app/models/weather_model.dart';
+import 'package:multitool_app/services/weather_service.dart';
 
 class WeatherState {
   static final WeatherState instance = WeatherState.internal();
