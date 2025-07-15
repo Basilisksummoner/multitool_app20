@@ -10,7 +10,7 @@ List<String> currencies = [];
 
 
 void getCurrencies(Function updateState) async{
-  var response = await http.get(Uri.parse(Config.urlForCurr));
+  var response = await http.get(Uri.parse(Config.urlForCurr('USD')));
 
   if (response.statusCode == 200) {
     try {
@@ -33,7 +33,7 @@ void getCurrencies(Function updateState) async{
   
 void getRates(Function updateState) async{
   
-  var response = await http.get(Uri.parse(Config.urlForCurr));
+  var response = await http.get(Uri.parse(Config.urlForCurr(CurrencyState().fromCurrency)));
     
     if (response.statusCode == 200) {
       try {
@@ -55,7 +55,7 @@ void getRates(Function updateState) async{
 
 void swapCurrencies(Function updateState) {
   String temp = CurrencyState().fromCurrency;
-  CurrencyState().toCurrency = CurrencyState().toCurrency;
+  CurrencyState().fromCurrency = CurrencyState().toCurrency;
   CurrencyState().toCurrency = temp;
   getRates(updateState);
 }
