@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:multitool_app/shared/app_state.dart';
 import '../services/currency_service.dart';
-import '../main.dart';
+import '../shared/main_scaffold.dart';
 
 
 class CurrencyPage extends StatefulWidget {
@@ -25,11 +25,9 @@ class CurrencyPageState extends State<CurrencyPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: defaultAppBar('Валютный калькулятор'),
-      
-      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-      body: Padding(
+    return MainScaffold(
+      title: 'Валютный калькулятор',
+      child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
