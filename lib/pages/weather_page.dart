@@ -61,15 +61,11 @@ class WeatherPageState extends State<WeatherPage> {
               children: [
                 Text(
                   myWeather!.cityName,
-                  style: TextStyles.size(22),
+                  style: TextStyles.size(22, FontWeight.w400),
                 ),
                 Text(
                   '${myWeather!.temperature.round()}°C',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                  style: TextStyles.size(32, FontWeight.bold)
                 ),
                 Lottie.asset(getWeatherAnimation(myWeather?.mainCondition)),
               ],
