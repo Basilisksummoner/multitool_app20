@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multitool_app/services/currency_service.dart';
 import 'package:multitool_app/shared/app_state.dart';
 import 'main_nav_bar.dart';
 
@@ -15,6 +16,7 @@ class LoadingPageState extends State<LoadingPage> {
   void initState() {
     super.initState();
     tryToLoad();
+    getCurrencies(setState);
   }
   Future<void> tryToLoad() async {
 

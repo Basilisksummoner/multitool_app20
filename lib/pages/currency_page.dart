@@ -20,7 +20,6 @@ class CurrencyPageState extends State<CurrencyPage> {
   @override
   void initState() {
     super.initState();
-    getCurrencies(setState);
   }
 
 
