@@ -16,13 +16,18 @@ class MainScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-        backgroundColor: const Color.fromARGB(255, 242, 232, 232),
-      ),
-      backgroundColor: Colors.black,
-      body: child
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+          backgroundColor: const Color.fromARGB(255, 242, 232, 232),
+        ),
+        backgroundColor: Colors.black,
+        body: child
+      )
     );
   }
 }

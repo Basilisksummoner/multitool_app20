@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/weather_model.dart';
 import 'package:lottie/lottie.dart';
 import '../shared/app_state.dart';
-import '../shared/main_scaffold.dart';
+import 'other/main_scaffold.dart';
 import '../shared/text_styles.dart';
 
 
@@ -14,7 +13,7 @@ class WeatherPage extends StatefulWidget {
 }
 
 class WeatherPageState extends State<WeatherPage> {
-  Weather? get myWeather => WeatherState.instance.weather;
+  final weather = WeatherState.instance.myWeather;
 
 
   // animations
@@ -55,19 +54,19 @@ class WeatherPageState extends State<WeatherPage> {
       title: 'Погода',
       child: Center(
         child: SingleChildScrollView(
-          child: myWeather != null
+          child: weather != null
           ? Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  myWeather!.cityName,
+                  weather!.cityName,
                   style: TextStyles.size(22, FontWeight.w400),
                 ),
                 Text(
-                  '${myWeather!.temperature.round()}°C',
+                  '${weather!.temperature.round()}°C',
                   style: TextStyles.size(32, FontWeight.bold)
                 ),
-                Lottie.asset(getWeatherAnimation(myWeather?.mainCondition)),
+                Lottie.asset(getWeatherAnimation(weather?.mainCondition)),
               ],
             )
           : Center(

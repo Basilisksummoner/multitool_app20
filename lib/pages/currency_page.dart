@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:multitool_app/shared/app_state.dart';
 import '../services/currency_service.dart';
-import '../shared/main_scaffold.dart';
+import 'other/main_scaffold.dart';
 import '../shared/text_styles.dart';
 
 
@@ -25,11 +25,7 @@ class CurrencyPageState extends State<CurrencyPage> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-    onTap: () {
-      FocusScope.of(context).unfocus();
-    },
-      child: MainScaffold(
+    return MainScaffold(
       title: 'Валютный калькулятор',
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -142,7 +138,6 @@ class CurrencyPageState extends State<CurrencyPage> {
           ),
         ),
       ),
-    ),
     );
   }
 }

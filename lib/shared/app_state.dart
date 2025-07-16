@@ -16,7 +16,7 @@ class WeatherState {
   
   String? get city => someCity;
   Coords? get coords => someCoords;
-  Weather? get weather => weatherModel;
+  Weather? get myWeather => weatherModel;
 
 
   Future loadWeatherData() async {

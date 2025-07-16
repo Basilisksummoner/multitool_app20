@@ -13,7 +13,7 @@ class LoadingPage extends StatefulWidget {
 
 class LoadingPageState extends State<LoadingPage> {
   
-  WeatherState get myWeather => WeatherState.instance;
+  final weather = WeatherState.instance;
   
   @override
   void initState() {
@@ -21,11 +21,12 @@ class LoadingPageState extends State<LoadingPage> {
     tryToLoad();
     getCurrencies(setState);
   }
+  
   Future<void> tryToLoad() async {
 
     try {
-      await myWeather.loadWeatherData();
-      if (myWeather.weather == null) {
+      await weather.loadWeatherData();
+      if (weather.myWeather == null) {
         throw Exception('Не удалось загрузить данные о погоде');
       }
       if (!mounted) return;
