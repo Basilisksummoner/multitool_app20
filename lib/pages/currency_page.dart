@@ -25,7 +25,11 @@ class CurrencyPageState extends State<CurrencyPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MainScaffold(
+    return GestureDetector(
+    onTap: () {
+      FocusScope.of(context).unfocus();
+    },
+      child: MainScaffold(
       title: 'Валютный калькулятор',
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -138,6 +142,7 @@ class CurrencyPageState extends State<CurrencyPage> {
           ),
         ),
       ),
+    ),
     );
   }
 }
