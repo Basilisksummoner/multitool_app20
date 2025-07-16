@@ -14,8 +14,8 @@ class WeatherPage extends StatefulWidget {
 }
 
 class WeatherPageState extends State<WeatherPage> {
-  Weather? myWeather;
-  
+  Weather? get myWeather => WeatherState.instance.weather;
+
 
   // animations
   String getWeatherAnimation(String? mainCondition) {
@@ -46,7 +46,6 @@ class WeatherPageState extends State<WeatherPage> {
   @override
   void initState() {
     super.initState();
-    myWeather = WeatherState.instance.weatherModel;
   }
 
 
