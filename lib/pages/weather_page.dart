@@ -73,10 +73,7 @@ class WeatherPageState extends State<WeatherPage> {
           : Center(
               child: Text(
               'No weather data available',
-              style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                  ),
+              style: TextStyles.size(18, FontWeight.w400),
             ),
           ),
         ),

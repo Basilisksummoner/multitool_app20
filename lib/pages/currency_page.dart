@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:multitool_app/shared/app_state.dart';
 import '../services/currency_service.dart';
 import '../shared/main_scaffold.dart';
+import '../shared/text_styles.dart';
 
 
 class CurrencyPage extends StatefulWidget {
@@ -125,10 +126,8 @@ class CurrencyPageState extends State<CurrencyPage> {
               ),
               SizedBox(height: 20),
               Text('Курс: ${CurrencyState().rate}',
-                style: TextStyle(
-                  color: Colors.white, fontSize: 20
-                )
-              ),
+                style: TextStyles.size(20, FontWeight.w400)
+                ),
               SizedBox(height: 40),
               Text(CurrencyState().total.toStringAsFixed(3),
                 style: TextStyle(
