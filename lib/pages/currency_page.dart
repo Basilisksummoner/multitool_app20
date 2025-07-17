@@ -79,7 +79,7 @@ class CurrencyPageState extends State<CurrencyPage> {
                   children: [
                     SizedBox(width: 100,
                       child: DropdownButton<String>(
-                        value: CurrencyState().fromCurrency,
+                        value: currency.fromCurrency,
                         isExpanded: true,
                         dropdownColor: Colors.black,
                         style: TextStyle(color: Colors.white),
@@ -91,7 +91,7 @@ class CurrencyPageState extends State<CurrencyPage> {
                         }).toList(),
                         onChanged: (newValue){
                           setState(() {
-                            CurrencyState().fromCurrency = newValue!;
+                            currency.fromCurrency = newValue!;
                             getRates(setState);
                           });
                           getCurrencies(setState);
@@ -106,7 +106,7 @@ class CurrencyPageState extends State<CurrencyPage> {
                     ),
                     SizedBox(width: 100,
                       child: DropdownButton<String>(
-                        value: CurrencyState().toCurrency,
+                        value: currency.toCurrency,
                         isExpanded: true,
                         dropdownColor: Colors.black,
                         style: TextStyle(color: Colors.white),
@@ -118,7 +118,7 @@ class CurrencyPageState extends State<CurrencyPage> {
                         }).toList(),
                         onChanged: (newValue){
                           setState(() {
-                            CurrencyState().toCurrency = newValue!;
+                            currency.toCurrency = newValue!;
                             getRates(setState);
                           });
                           getCurrencies(setState);
@@ -129,11 +129,11 @@ class CurrencyPageState extends State<CurrencyPage> {
                 ),
               ),
               SizedBox(height: 20),
-              Text('Курс: ${CurrencyState().rate}',
+              Text('Курс: ${currency.rate}',
                 style: TextStyles.size(20, FontWeight.w400)
                 ),
               SizedBox(height: 40),
-              Text(CurrencyState().total.toStringAsFixed(3),
+              Text(currency.total.toStringAsFixed(3),
                 style: TextStyle(
                   color: const Color.fromARGB(255, 173, 129, 217),
                   fontSize: 40,
