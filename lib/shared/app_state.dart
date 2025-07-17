@@ -63,9 +63,9 @@ class WeatherState {
 }
 
 class CurrencyState {
-  static final CurrencyState _instance = CurrencyState._internal();
+  static final CurrencyState instance = CurrencyState._internal();
   
-  factory CurrencyState() => _instance;
+  factory CurrencyState() => instance;
   
   CurrencyState._internal();
   

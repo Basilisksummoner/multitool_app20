@@ -14,12 +14,15 @@ class CurrencyPage extends StatefulWidget {
 }
 
 class CurrencyPageState extends State<CurrencyPage> {
+  final currency = CurrencyState.instance;
+
   
   TextEditingController amountController = TextEditingController();
-
+  
   @override
-  void initState() {
-    super.initState();
+  void dispose() {
+    amountController.dispose();
+    super.dispose();
   }
 
 
@@ -59,12 +62,14 @@ class CurrencyPageState extends State<CurrencyPage> {
                         ),
                       )),
                       onChanged: (value){
-                        if (value != ''){
-                          setState(() {
-                            double amount = double.parse(value);
-                            CurrencyState().total = amount * CurrencyState().rate;
-                          });
-                        }
+                        setState(() {
+                          if (value.isEmpty){
+                            currency.total = 0.0;
+                          } else {
+                            double amount = double.tryParse(value) ?? 0.0;
+                            currency.total = amount * currency.rate;
+                            }
+                        });  
                       },
                 ),
               ),
