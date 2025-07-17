@@ -63,11 +63,11 @@ class WeatherState {
 }
 
 class CurrencyState {
-  static final CurrencyState instance = CurrencyState._internal();
+  static final CurrencyState instance = CurrencyState.internal();
   
   factory CurrencyState() => instance;
   
-  CurrencyState._internal();
+  CurrencyState.internal();
   
   String fromDefault = 'USD';
   String toDefault = 'KGS';
