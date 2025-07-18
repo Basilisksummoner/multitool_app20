@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import '../shared/app_state.dart';
-import 'other/main_scaffold.dart';
+import '../main_scaffold.dart';
 import '../text_styles.dart';
 
 

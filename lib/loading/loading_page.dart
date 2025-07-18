@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:multitool_app/api_methods/currency_method.dart';
 import 'package:multitool_app/shared/app_state.dart';
-import '../pages/other/main_nav_bar.dart';
+import '../main_nav_bar.dart';
 
 
 class LoadingPage extends StatefulWidget {

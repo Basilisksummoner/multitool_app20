@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:multitool_app/shared/app_state.dart';
 import '../api_methods/currency_method.dart';
-import 'other/main_scaffold.dart';
+import '../main_scaffold.dart';
 import '../text_styles.dart';
 
 
