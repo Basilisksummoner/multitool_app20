@@ -19,7 +19,7 @@ class WeatherState {
   Weather? get myWeather => weatherModel;
 
 
-  Future loadWeatherData() async {
+  Future getPermission() async {
 
     try {
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();

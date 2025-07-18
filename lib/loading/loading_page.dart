@@ -25,7 +25,7 @@ class LoadingPageState extends State<LoadingPage> {
   Future<void> tryToLoad() async {
 
     try {
-      await weather.loadWeatherData();
+      await weather.getPermission();
       if (weather.myWeather == null) {
         throw Exception('Не удалось загрузить данные о погоде');
       }
