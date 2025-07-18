@@ -54,7 +54,7 @@ class WeatherState {
       WeatherState().someCity = city;
 
       
-      final weather = await WeatherService().getWeatherByCity(city);
+      final weather = await WeatherMethod().getWeatherByCity(city);
       WeatherState().weatherModel = weather;
     } catch (e) {
       print('Ошибка при загрузке данных о погоде: $e');

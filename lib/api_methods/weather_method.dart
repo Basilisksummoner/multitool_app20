@@ -4,10 +4,10 @@ import '../models/weather_model.dart';
 import 'package:multitool_app/config/config.dart';
 
 
-class WeatherService {
-  static final WeatherService instance = WeatherService.internal();
-  factory WeatherService() => instance;
-  WeatherService.internal();
+class WeatherMethod {
+  static final WeatherMethod instance = WeatherMethod.internal();
+  factory WeatherMethod() => instance;
+  WeatherMethod.internal();
 
   static final String apiKey = Config.weatherApiKey;
 

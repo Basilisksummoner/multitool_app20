@@ -52,7 +52,7 @@ void getRates(Function updateState) async{
   }
 }
 
-swapCurrencies(Function updateState) {
+void swapCurrencies(Function updateState) {
   String temp = currency.fromCurrency;
   currency.fromCurrency = currency.toCurrency;
   currency.toCurrency = temp;
