@@ -1,5 +1,8 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+final Map<String, String> header = {
+  "Content-Type" : "application/json"
+};
 
 class Config {
   static final String weatherApiKey = dotenv.env['API_KEY_1'] ?? '';
@@ -11,8 +14,3 @@ class Config {
     return '$baseUrlCurr/$calcApiKey/latest/$from';
   }
 }
-
-
-final Map<String, String> header = {
-  "Content-Type" : "application/json"
-};
