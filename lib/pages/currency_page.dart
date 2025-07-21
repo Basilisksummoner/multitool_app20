@@ -145,10 +145,4 @@ class CurrencyPageState extends State<CurrencyPage> {
       ),
     );
   }
-}
-  
-  
-
-
-             
-               
+}              
