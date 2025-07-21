@@ -23,7 +23,7 @@ class LoadingPageState extends State<LoadingPage> {
   void initState() {
     super.initState();
     tryToLoad();
-    getCurrencies(setState);
+    getCurrencies();
   }
   
   Future getPermission() async {

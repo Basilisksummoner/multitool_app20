@@ -92,9 +92,9 @@ class CurrencyPageState extends State<CurrencyPage> {
                         onChanged: (newValue){
                           setState(() {
                             currency.fromCurrency = newValue!;
-                            getRates(setState);
+                            getRates();
                           });
-                          getCurrencies(setState);
+                          getCurrencies();
                         },
                       ),
                     ),
@@ -119,9 +119,9 @@ class CurrencyPageState extends State<CurrencyPage> {
                         onChanged: (newValue){
                           setState(() {
                             currency.toCurrency = newValue!;
-                            getRates(setState);
+                            getRates();
                           });
-                          getCurrencies(setState);
+                          getCurrencies();
                         },
                       ),
                     ),
