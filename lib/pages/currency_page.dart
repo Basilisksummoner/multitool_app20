@@ -36,7 +36,7 @@ class CurrencyPageState extends State<CurrencyPage> {
           child: Column(
             children: [
               Padding(padding: const EdgeInsets.all(40),
-                child: Lottie.asset('lib/assets/currency.json',
+                child: Lottie.asset('assets/currency/currency.json',
                 width: MediaQuery.of(context).size.width / 2,)
               ),
               Padding(padding: EdgeInsets.symmetric(vertical: 15,horizontal: 20),

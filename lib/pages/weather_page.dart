@@ -27,17 +27,17 @@ class WeatherPageState extends State<WeatherPage> {
         case 'haze':
         case 'dust':
         case 'fog':
-          return 'lib/assets/clouds.json';
+          return 'assets/weather/clouds.json';
         case 'rain':
         case 'drizzle':
         case 'shower rain':
-          return 'lib/assets/rain.json';
+          return 'assets/weather/rain.json';
         case 'thunderstorm':
-          return 'lib/assets/thunder.json';
+          return 'assets/weather/thunder.json';
         case 'clear':
-          return 'lib/assets/sunny.json';
+          return 'assets/weather/sunny.json';
         default:
-          return 'lib/assets/sunny.json';
+          return 'assets/weather/sunny.json';
       }
     }
 
