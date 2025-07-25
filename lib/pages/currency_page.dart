@@ -89,17 +89,20 @@ class CurrencyPageState extends State<CurrencyPage> {
                             child: Text(value)
                           );
                         }).toList(),
-                        onChanged: (newValue){
+                        onChanged: (newValue) async{
                           setState(() {
                             currency.fromCurrency = newValue!;
-                            getRates();
                           });
-                          getCurrencies();
+                          await currency.updateCurrency(from: newValue);
+                          setState(() {});
                         },
                       ),
                     ),
                     IconButton(
-                      onPressed: () => swapCurrencies(setState),
+                      onPressed: () async {
+                        await swapCurrencies();
+                        setState(() {});
+                      },
                       icon: Icon(Icons.swap_horiz,
                       size: 40, 
                       color: Colors.white),
@@ -116,12 +119,13 @@ class CurrencyPageState extends State<CurrencyPage> {
                             child: Text(value)
                           );
                         }).toList(),
-                        onChanged: (newValue){
+                        onChanged: (newValue) async {
                           setState(() {
                             currency.toCurrency = newValue!;
                             getRates();
                           });
-                          getCurrencies();
+                          await currency.updateCurrency(to: newValue);
+                          setState(() {});
                         },
                       ),
                     ),

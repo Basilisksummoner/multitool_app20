@@ -22,8 +22,7 @@ class LoadingPageState extends State<LoadingPage> {
   @override
   void initState() {
     super.initState();
-    tryToLoad();
-    getCurrencies();
+    loadAll();
   }
   
   Future getPermission() async {
@@ -68,13 +67,17 @@ class LoadingPageState extends State<LoadingPage> {
     }
   }
   
-  Future<void> tryToLoad() async {
+  Future<void> loadAll() async {
 
     try {
       await getPermission();
+      
       if (weather.myWeather == null) {
         throw Exception('Не удалось загрузить данные о погоде');
       }
+      await getCurrencies();
+
+      
       if (!mounted) return;
       Navigator.pushReplacement(
         context,

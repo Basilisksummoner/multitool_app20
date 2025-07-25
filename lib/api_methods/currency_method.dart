@@ -7,7 +7,7 @@ import 'package:multitool_app/shared/app_state.dart';
 List<String> currencies = [];
 final currency = CurrencyState.instance;
 
-void getCurrencies() async{
+Future getCurrencies() async {
   var response = await http.get(Uri.parse(Config.urlForCurr('USD')));
 
 
@@ -20,7 +20,7 @@ void getCurrencies() async{
       print('Ответ от сервера: ${response.body}');
     }
 
-    getRates();
+    await getRates();
   
   } else {
     print('Ошибка загрузки данных: ${response.statusCode}');
@@ -28,7 +28,7 @@ void getCurrencies() async{
   }
 }
   
-void getRates() async{
+Future getRates() async {
   
   var response = await http.get(Uri.parse(Config.urlForCurr(currency.fromCurrency)));
     
@@ -50,9 +50,10 @@ void getRates() async{
   }
 }
 
-void swapCurrencies(Function updateState) {
-  String temp = currency.fromCurrency;
-  currency.fromCurrency = currency.toCurrency;
-  currency.toCurrency = temp;
-  getRates();
+Future swapCurrencies() async {
+  final temp = currency.fromCurrency;
+  await currency.updateCurrency(
+    from: currency.toCurrency,
+    to: temp,
+  );
 }
