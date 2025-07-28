@@ -30,7 +30,7 @@ class CurrencyState {
   double conversionRate = 0.0;
   double totalAmount = 0.0;
   
-  List<Currency> allCurrencies = [];
+  List<String> currencies = [];
 
   String get fromCurrency => fromDefault;
   set fromCurrency(String value) {

@@ -6,9 +6,9 @@ import 'package:multitool_app/models/currency_model.dart';
 
 
 final currency = CurrencyState.instance;
-var currencies = CurrencyState.instance.allCurrencies;
+var currencies = CurrencyState.instance.currencies;
 
-/*Future getCurrencies() async {
+Future getCurrencies() async {
   var response = await http.get(Uri.parse(Config.urlForCurr('USD')));
 
 
@@ -49,7 +49,7 @@ Future getRates() async {
     print('Ошибка загрузки данных: ${response.statusCode}');
     print('Ответ: ${response.body}');
   }
-}*/
+}
 
 Future swapCurrencies() async {
   final temp = currency.fromCurrency;
@@ -60,7 +60,7 @@ Future swapCurrencies() async {
 }
 
 
-Future getCurrencies() async {
+/*Future getCurrencies() async {
   
   final response = await http.get(Uri.parse(Config.urlForCurr(currency.fromCurrency)));
   
@@ -77,4 +77,4 @@ Future getCurrencies() async {
           print('Ошибка при разборе данных: $e');
           print('Ответ от сервера: ${response.body}');}
   }
-}
+}*/
