@@ -1,4 +1,4 @@
-import 'package:multitool_app/api_methods/currency_method.dart';
+import 'package:multitool_app/models/currency_model.dart';
 import 'package:multitool_app/models/weather_model.dart';
 
 
@@ -30,7 +30,7 @@ class CurrencyState {
   double conversionRate = 0.0;
   double totalAmount = 0.0;
   
-  List<String> currencies = [];
+  List<Currency> allCurrencies = [];
 
   String get fromCurrency => fromDefault;
   set fromCurrency(String value) {
@@ -49,11 +49,10 @@ class CurrencyState {
     totalAmount = value;
   }
 
+
    Future<void> updateCurrency({String? from, String? to}) async {
     if (from != null) fromCurrency = from;
     if (to != null) toCurrency = to;
-
-    await getRates(); // автоматически обновим курс
   }
 
 }

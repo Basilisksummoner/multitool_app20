@@ -90,9 +90,6 @@ class CurrencyPageState extends State<CurrencyPage> {
                           );
                         }).toList(),
                         onChanged: (newValue) async{
-                          setState(() {
-                            currency.fromCurrency = newValue!;
-                          });
                           await currency.updateCurrency(from: newValue);
                           setState(() {});
                         },
@@ -120,10 +117,6 @@ class CurrencyPageState extends State<CurrencyPage> {
                           );
                         }).toList(),
                         onChanged: (newValue) async {
-                          setState(() {
-                            currency.toCurrency = newValue!;
-                            getRates();
-                          });
                           await currency.updateCurrency(to: newValue);
                           setState(() {});
                         },

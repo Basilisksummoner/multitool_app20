@@ -2,12 +2,13 @@ import 'package:http/http.dart' as http;
 import 'package:multitool_app/config/config.dart';
 import 'dart:convert';
 import 'package:multitool_app/shared/app_state.dart';
+import 'package:multitool_app/models/currency_model.dart';
 
 
-List<String> currencies = [];
 final currency = CurrencyState.instance;
+var currencies = CurrencyState.instance.allCurrencies;
 
-Future getCurrencies() async {
+/*Future getCurrencies() async {
   var response = await http.get(Uri.parse(Config.urlForCurr('USD')));
 
 
@@ -48,7 +49,7 @@ Future getRates() async {
     print('Ошибка загрузки данных: ${response.statusCode}');
     print('Ответ: ${response.body}');
   }
-}
+}*/
 
 Future swapCurrencies() async {
   final temp = currency.fromCurrency;
@@ -56,4 +57,24 @@ Future swapCurrencies() async {
     from: currency.toCurrency,
     to: temp,
   );
+}
+
+
+Future getCurrencies() async {
+  
+  final response = await http.get(Uri.parse(Config.urlForCurr(currency.fromCurrency)));
+  
+  if (response.statusCode == 200) {
+    try {
+      
+      final data = json.decode(response.body);
+
+      currency.allCurrencies = Currency.fromJson(data);
+
+      final rate = (data['conversion_rates'][currency.toCurrency] as num).toDouble();
+      currency.conversionRate = rate;
+      } catch (e) {
+          print('Ошибка при разборе данных: $e');
+          print('Ответ от сервера: ${response.body}');}
+  }
 }
