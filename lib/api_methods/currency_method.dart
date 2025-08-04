@@ -52,6 +52,7 @@ Future getRates() async {
 }
 
 Future swapCurrencies() async {
+
   final temp = currency.fromCurrency;
   await currency.updateCurrency(
     from: currency.toCurrency,
@@ -60,21 +61,3 @@ Future swapCurrencies() async {
 }
 
 
-/*Future getCurrencies() async {
-  
-  final response = await http.get(Uri.parse(Config.urlForCurr(currency.fromCurrency)));
-  
-  if (response.statusCode == 200) {
-    try {
-      
-      final data = json.decode(response.body);
-
-      currency.allCurrencies = Currency.fromJson(data);
-
-      final rate = (data['conversion_rates'][currency.toCurrency] as num).toDouble();
-      currency.conversionRate = rate;
-      } catch (e) {
-          print('Ошибка при разборе данных: $e');
-          print('Ответ от сервера: ${response.body}');}
-  }
-}*/
