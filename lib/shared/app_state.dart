@@ -1,4 +1,3 @@
-import 'package:multitool_app/models/currency_model.dart';
 import 'package:multitool_app/models/weather_model.dart';
 
 

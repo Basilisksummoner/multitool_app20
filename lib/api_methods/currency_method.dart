@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:multitool_app/config/config.dart';
 import 'dart:convert';
 import 'package:multitool_app/shared/app_state.dart';
-import 'package:multitool_app/models/currency_model.dart';
+
 
 
 final currency = CurrencyState.instance;
