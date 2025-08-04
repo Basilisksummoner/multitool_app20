@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:multitool_app/models/currency_model.dart';
 import 'package:multitool_app/shared/app_state.dart';
 import '../api_methods/currency_method.dart';
 import '../main_scaffold.dart';
@@ -15,7 +16,7 @@ class CurrencyPage extends StatefulWidget {
 
 class CurrencyPageState extends State<CurrencyPage> {
   final currency = CurrencyState.instance;
-
+  final currencies = CurrencyState.instance.currenciesList;
   
   TextEditingController amountController = TextEditingController();
   
@@ -83,10 +84,10 @@ class CurrencyPageState extends State<CurrencyPage> {
                         isExpanded: true,
                         dropdownColor: Colors.black,
                         style: TextStyle(color: Colors.white),
-                        items: currencies.map((String value){
+                        items: currency.currenciesList.map<DropdownMenuItem<String>>((Currency c) {
                           return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value)
+                            value: c.name,
+                            child: Text(c.name),
                           );
                         }).toList(),
                         onChanged: (newValue) async{
@@ -110,10 +111,10 @@ class CurrencyPageState extends State<CurrencyPage> {
                         isExpanded: true,
                         dropdownColor: Colors.black,
                         style: TextStyle(color: Colors.white),
-                        items: currencies.map((String value){
+                        items: currency.currenciesList.map<DropdownMenuItem<String>>((Currency c) {
                           return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value)
+                            value: c.name,
+                            child: Text(c.name),
                           );
                         }).toList(),
                         onChanged: (newValue) async {

@@ -1,5 +1,5 @@
 import 'package:multitool_app/models/weather_model.dart';
-
+import 'package:multitool_app/models/currency_model.dart';
 
 class WeatherState {
   static final WeatherState instance = WeatherState.internal();
@@ -29,7 +29,7 @@ class CurrencyState {
   double conversionRate = 0.0;
   double totalAmount = 0.0;
   
-  List<String> currencies = [];
+  List<Currency> currenciesList = [];
 
   String get fromCurrency => fromDefault;
   set fromCurrency(String value) {
